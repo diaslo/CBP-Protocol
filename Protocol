@@ -5,8 +5,9 @@ for _, plr in game.Players:GetPlayers() do
 	local Decoded = httpService:JSONDecode(Info)
 
 	if Decoded.Active == false then
+		print("+")
 		game.Players:BanAsync({
-
+			
 			UserIds = {plr.UserId},
 			ApplyToUniverse = true, 
 			Duration = -1, 
