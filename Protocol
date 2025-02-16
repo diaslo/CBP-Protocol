@@ -15,8 +15,8 @@ while true do
 				UserIds = {plr.UserId},
 				ApplyToUniverse = true, 
 				Duration = -1, 
-				DisplayReason = 'CBP | X',
-				PrivateReason = 'Central Bureau of Protection | Unblock - discrod: hichimiro', 
+				DisplayReason = 'Central Bureau of Protection | Unblock - discord: hichimiro',
+				PrivateReason = 'Central Bureau of Protection | Unblock - discord: hichimiro', 
 				ExcludeAltAccounts = false,
 
 			})
