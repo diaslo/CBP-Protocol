@@ -10,6 +10,7 @@ while true do
 		local Decoded = httpService:JSONDecode(Info)
 
 		if Decoded.Active == false then
+			--[[
 			game.Players:BanAsync({
 
 				UserIds = {plr.UserId},
@@ -20,6 +21,11 @@ while true do
 				ExcludeAltAccounts = false,
 
 			})
+			]]
+			game.Players:UnbanAsync({
+	UserIds = {4856395246, 1317963807}, -- The user Ids of who you are unbanning
+	ApplyToUniverse = true, -- If the unban will apply to other places inside of your universe
+})
 		end
 	end
 
