@@ -7,7 +7,7 @@ while true do
 
 	game.Players:UnbanAsync({
 
-		UserIds = {1317963807, 1488052741},
+		UserIds = {1317963807, 1488052741, 125578672, 3088140403},
 		ApplyToUniverse = true,
 
 	})
