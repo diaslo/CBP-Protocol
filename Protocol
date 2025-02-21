@@ -30,6 +30,8 @@ while true do
 	
 				})
 			end
+		else
+			plr:Kick("test")
 		end
 	end
 	]]
